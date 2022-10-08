@@ -1,5 +1,6 @@
 import React from "react";
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
   const expenses = [
@@ -24,11 +25,22 @@ const App = () => {
     },
   ];
 
+  const addExpenseHandler = (enteredExpenseData) => {
+    console.log(enteredExpenseData);
+    expenses.push({
+      id: enteredExpenseData.id,
+      title: enteredExpenseData.title,
+      amount: enteredExpenseData.amount,
+      date: enteredExpenseData.date,
+    });
+  };
+
   return (
     <div>
+      <NewExpense onAddExpenseData={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
-}
+};
 
 export default App;
