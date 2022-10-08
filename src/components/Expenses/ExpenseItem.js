@@ -4,10 +4,14 @@ import "./ExpenseItem.css";
 import { useState } from "react";
 
 const ExpenseItem = (props) => {
-  let { title, setTitle } = useState(props.title);
+  const [title, setTitle] = useState(props.title);
   const clickHandler = () => {
-    setTitle("Updated!");
-  };
+    if (title === "Updated!") {
+      setTitle(props.title);
+    } else {
+      setTitle("Updated!");
+    }
+  }; 
 
   return (
     <Card className="expense-item">
